@@ -1,89 +1,36 @@
 import Head from 'next/head'
 import {Container, Divider, Typography} from "@mui/material";
-import ReactMarkdown from "react-markdown";
 import styles from '../styles/Home.module.css'
 import client from '../util/apolloClient';
-import {GET_RESUME} from '../graphql/resume/queries';
+import {GET_LANDING} from '../graphql/pages/queries';
+import {useEffect} from "react";
+import Image from "next/image";
 
 
-export default function Home({resume}) {
+export default function Home({page}) {
+
+    //TODO: GET URI FROM Process Env
+    const uri = 'http://localhost:1337';
+
+    useEffect(() => {
+        console.log(page)
+        console.log(page?.attributes?.Title)
+    }, [])
 
     return (
         <Container maxWidth='lg' className={styles.container}>
-            <Head>
-                <title>Wayne Foster Jr</title>
-                <meta name="description" content="Wayne Foster Jr - 2022"/>
-                <link rel="icon" href="/favicon.ico"/>
-            </Head>
 
             <main className={styles.main}>
-                <Typography variant='h3' gutterBottom textAlign='center'>
-                    Wayne Foster Jr - {resume.data ? resume?.data?.attributes?.Title : 'Web Developer'}
+
+                <Image height={400} width={800} layout={'intrinsic'}
+                       src={uri + page?.attributes?.Cover?.data?.attributes?.url}/>
+
+                <Typography variant='h2' gutterBottom>
+                    {page?.attributes?.Title}
                 </Typography>
-
-                <Typography variant='subtitle1' textAlign='center'>
-                    {resume.data ? resume?.data?.attributes?.Statement : 'Lorem Imps um'}
+                <Typography variant='subtitle1'>
+                    {page?.attributes?.Description}
                 </Typography>
-
-                <div className={styles.section}>
-                    <Divider className={styles.divider}>
-                        Skills
-                    </Divider>
-
-                    <div>
-                        <ul>
-                            {resume?.data?.attributes?.skills?.data.map((skillObj) => {
-                                return <li key={skillObj?.Id}>{skillObj?.attributes?.Name}</li>
-                            })}
-                        </ul>
-                    </div>
-                </div>
-
-                <div className={styles.section}>
-                    <Divider className={styles.divider}>
-                        Projects
-                    </Divider>
-
-                    <div>
-                        {resume?.data?.attributes?.projects?.data.map((project) => {
-                            return (<div key={project?.Id} className={styles.card}>
-                                <Typography variant='h2'>
-                                    {project?.attributes?.Title}
-                                </Typography>
-                                <br/>
-                                <Typography variant='body2'>
-                                    {project?.attributes?.Description}
-                                </Typography>
-                            </div>)
-                        })}
-                    </div>
-                </div>
-
-                <div className={styles.section}>
-                    <Divider className={styles.divider}>
-                        Work
-                    </Divider>
-
-                    <div>
-                        {resume?.data?.attributes?.works?.data.map((job) => {
-                            return (<div key={job?.Id} className={styles.card}>
-                                <Typography variant='h2'>
-                                    {job?.attributes?.Company}
-                                </Typography>
-                                <Typography variant="subtitle1">
-                                    {job?.attributes?.Title}
-                                </Typography>
-                                <br/>
-                                <Typography variant='body2'>
-                                    {job?.attributes?.Description}
-                                </Typography>
-                                <ReactMarkdown>
-                                    {job?.attributes?.Details}
-                                </ReactMarkdown>
-                            </div>)
-                        })}
-                    </div>
-                </div>
             </main>
 
 
@@ -94,8 +41,6 @@ export default function Home({resume}) {
                     rel="noopener noreferrer"
                 >
                     Powered by Next.js
-                    <span className={styles.logo}>
-          </span>
                 </a>
             </footer>
         </Container>
@@ -104,11 +49,11 @@ export default function Home({resume}) {
 
 export async function getStaticProps(context) {
     const {data} = await client.query({
-        query: GET_RESUME
+        query: GET_LANDING
     });
     return {
         props: {
-            resume: data.resume,
+            page: data.landingPage.data
         }
     }
 }
