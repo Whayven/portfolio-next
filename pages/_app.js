@@ -8,7 +8,7 @@ import Nav from '../components/Nav';
 
 function MyApp({ Component, pageProps }) {
   return (
-      <div>
+      <>
         <Head>
           <title>Wayne Foster Jr</title>
           <meta name="description" content="Wayne Foster Jr - 2022"/>
@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }) {
         </Head>
         <Nav />
         <Component {...pageProps} />
-      </div>
+      </>
 
   )
 }

@@ -15,6 +15,38 @@ query GET_LANDING {
             }
           }
         }
+        projects {
+          data {
+            id
+            attributes {
+              Title
+              Description
+              Url
+              Image {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
+            }
+          }
+        }
+        certifications {
+          data {
+            id
+            attributes {
+              Name
+              Logo {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

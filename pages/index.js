@@ -1,10 +1,10 @@
-import Head from 'next/head'
 import {Container, Divider, Typography} from "@mui/material";
 import styles from '../styles/Home.module.css'
 import client from '../util/apolloClient';
 import {GET_LANDING} from '../graphql/pages/queries';
 import {useEffect} from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 
 export default function Home({page}) {
@@ -24,13 +24,54 @@ export default function Home({page}) {
 
                 <Image height={400} width={800} layout={'intrinsic'}
                        src={uri + page?.attributes?.Cover?.data?.attributes?.url}/>
-
                 <Typography variant='h2' gutterBottom>
                     {page?.attributes?.Title}
                 </Typography>
-                <Typography variant='subtitle1'>
+                <Typography variant='subtitle1' textAlign={'center'}>
                     {page?.attributes?.Description}
                 </Typography>
+                <br/>
+                <div className={styles.section}>
+                    <Divider className={styles.divider}>
+                        Certifications
+                    </Divider>
+                    <div>
+                        {page?.attributes?.certifications?.data.map((cert, i) => {
+                            return (
+                                <div key={i} className={styles.certification}>
+                                    <Image src={uri + cert?.attributes?.Logo?.data?.attributes?.url} height={100}
+                                           width={100} layout={'fixed'}/>
+                                    <br/>
+                                    <Typography variant='h5'>
+                                        {cert?.attributes?.Name}
+                                    </Typography>
+                                </div>
+                            )
+                        })}
+                    </div>
+                </div>
+
+                <div className={styles.section}>
+                    <Divider className={styles.divider}>
+                        Projects
+                    </Divider>
+
+                    <div>
+                        {page?.attributes?.projects?.data.map((project) => {
+                            return (<div key={project?.Id} className={styles.card}>
+                                <a href={project?.attributes?.Url} target={'_blank'}>
+                                    <Typography variant='h2'>
+                                        {project?.attributes?.Title}
+                                    </Typography>
+                                </a>
+                                <br/>
+                                <Typography variant='body2'>
+                                    {project?.attributes?.Description}
+                                </Typography>
+                            </div>)
+                        })}
+                    </div>
+                </div>
             </main>
 
 

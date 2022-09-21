@@ -22,8 +22,12 @@
   max-height: 10vh;
 }
 
-.image {
-
+.certification {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 25vh;
 }
 
 .footer a {
@@ -116,7 +120,7 @@
 }
 
 .section {
-  width: 50vw;
+  width: 70vw;
 }
 
 
