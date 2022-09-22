@@ -17,8 +17,7 @@ export default function Home({page}) {
         console.log(page?.attributes?.Title)
     }, [])
 
-    return (
-        <Container maxWidth='lg' className={styles.container}>
+    return (<Container maxWidth='lg' className={styles.container}>
 
             <main className={styles.main}>
 
@@ -31,27 +30,26 @@ export default function Home({page}) {
                     {page?.attributes?.Description}
                 </Typography>
                 <br/>
-                <div className={styles.section}>
+
+                <Container className={styles.section}>
                     <Divider className={styles.divider}>
                         Certifications
                     </Divider>
                     <div>
                         {page?.attributes?.certifications?.data.map((cert, i) => {
-                            return (
-                                <div key={i} className={styles.certification}>
+                            return (<div key={i} className={styles.certification}>
                                     <Image src={uri + cert?.attributes?.Logo?.data?.attributes?.url} height={100}
                                            width={100} layout={'fixed'}/>
                                     <br/>
                                     <Typography variant='h5'>
                                         {cert?.attributes?.Name}
                                     </Typography>
-                                </div>
-                            )
+                                </div>)
                         })}
                     </div>
-                </div>
+                </Container>
 
-                <div className={styles.section}>
+                <Container className={styles.section}>
                     <Divider className={styles.divider}>
                         Projects
                     </Divider>
@@ -71,7 +69,7 @@ export default function Home({page}) {
                             </div>)
                         })}
                     </div>
-                </div>
+                </Container>
             </main>
 
 
@@ -84,8 +82,7 @@ export default function Home({page}) {
                     Powered by Next.js
                 </a>
             </footer>
-        </Container>
-    )
+        </Container>)
 }
 
 export async function getStaticProps(context) {
