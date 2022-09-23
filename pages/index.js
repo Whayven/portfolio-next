@@ -13,10 +13,8 @@ export default function Home({page}) {
         <main className={styles.main}>
 
             <Image height={400} width={800} layout={'intrinsic'}
-                   src={page?.attributes?.Cover?.data?.attributes?.url}
-                   alt={page?.attributes?.Cover?.data?.attributes?.caption}
-            />
-            <Typography variant='h2' gutterBottom>
+                   src={page?.attributes?.Cover?.data?.attributes?.url}/>
+            <Typography variant='h2' textAlign={'Center'} gutterBottom>
                 {page?.attributes?.Title}
             </Typography>
             <Typography variant='subtitle1' textAlign={'center'}>
@@ -31,9 +29,7 @@ export default function Home({page}) {
                 <div>
                     {page?.attributes?.certifications?.data.map((cert, i) => {
                         return (<div key={i} className={styles.certification}>
-                            <Image src={cert?.attributes?.Logo?.data?.attributes?.url}
-                                   alt={cert?.attributes?.Name}
-                                   height={100}
+                            <Image src={cert?.attributes?.Logo?.data?.attributes?.url} height={100}
                                    width={100} layout={'fixed'}/>
                             <br/>
                             <Typography variant='h5'>
