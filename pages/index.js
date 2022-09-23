@@ -16,7 +16,7 @@ export default function Home({page}) {
                    src={page?.attributes?.Cover?.data?.attributes?.url}
                    alt={page?.attributes?.Cover?.data?.attributes?.caption}
             />
-            <Typography variant='h2' gutterBottom>
+            <Typography variant='h2' textAlign={'Center'} gutterBottom>
                 {page?.attributes?.Title}
             </Typography>
             <Typography variant='subtitle1' textAlign={'center'}>
@@ -34,7 +34,8 @@ export default function Home({page}) {
                             <Image src={cert?.attributes?.Logo?.data?.attributes?.url}
                                    alt={cert?.attributes?.Name}
                                    height={100}
-                                   width={100} layout={'fixed'}/>
+                                   width={100}
+                                   layout={'fixed'}/>
                             <br/>
                             <Typography variant='h5'>
                                 {cert?.attributes?.Name}
