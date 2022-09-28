@@ -5,12 +5,11 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import Head from "next/head";
 import Nav from '../components/Nav';
-import '../styles/GlobalCssDrawer.css'
-import '../styles/GlobalCssIcon.css'
+import { StyledEngineProvider} from "@mui/material/styles";
 
 function MyApp({ Component, pageProps }) {
   return (
-      <>
+      <StyledEngineProvider>
         <Head>
           <title>Wayne Foster Jr</title>
           <meta name="description" content="Wayne Foster Jr - 2022"/>
@@ -18,7 +17,7 @@ function MyApp({ Component, pageProps }) {
         </Head>
         <Nav />
         <Component {...pageProps} />
-      </>
+      </StyledEngineProvider>
 
   )
 }
