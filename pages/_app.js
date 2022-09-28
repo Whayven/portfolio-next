@@ -5,6 +5,8 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import Head from "next/head";
 import Nav from '../components/Nav';
+import '../styles/GlobalCssDrawer.css'
+import '../styles/GlobalCssIcon.css'
 
 function MyApp({ Component, pageProps }) {
   return (

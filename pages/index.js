@@ -2,9 +2,7 @@ import {Container, Divider, Typography} from "@mui/material";
 import styles from '../styles/Home.module.css'
 import client from '../util/apolloClient';
 import {GET_LANDING} from '../graphql/pages/queries';
-import {useEffect} from "react";
 import Image from "next/image";
-import Link from "next/link";
 
 
 export default function Home({page}) {
@@ -16,7 +14,7 @@ export default function Home({page}) {
                    src={page?.attributes?.Cover?.data?.attributes?.url}
                    alt={page?.attributes?.Cover?.data?.attributes?.caption}
             />
-            <Typography variant='h2' textAlign={'Center'} gutterBottom>
+            <Typography variant='h2' textAlign={'center'} gutterBottom>
                 {page?.attributes?.Title}
             </Typography>
             <Typography variant='subtitle1' textAlign={'center'}>
@@ -37,7 +35,7 @@ export default function Home({page}) {
                                    width={100}
                                    layout={'fixed'}/>
                             <br/>
-                            <Typography variant='h5'>
+                            <Typography variant='h5' textAlign={'center'}>
                                 {cert?.attributes?.Name}
                             </Typography>
                         </div>)
@@ -51,8 +49,8 @@ export default function Home({page}) {
                 </Divider>
 
                 <div>
-                    {page?.attributes?.projects?.data.map((project) => {
-                        return (<div key={project?.Id} className={styles.card}>
+                    {page?.attributes?.projects?.data.map((project, i) => {
+                        return (<div key={i} className={styles.card}>
                             <a href={project?.attributes?.Url}
                                target={'_blank'}
                                rel="noopener noreferrer">
@@ -83,7 +81,7 @@ export default function Home({page}) {
     </Container>)
 }
 
-export async function getStaticProps(context) {
+export async function getStaticProps() {
     const {data} = await client.query({
         query: GET_LANDING
     });

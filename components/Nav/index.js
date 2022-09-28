@@ -6,13 +6,24 @@ import Typography from '@mui/material/Typography';
 import DescriptionIcon from '@mui/icons-material/Description';
 import MenuIcon from '@mui/icons-material/Menu';
 import HomeIcon from '@mui/icons-material/Home';
-import {Divider, Drawer, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText} from "@mui/material";
+import {
+    Divider,
+    Drawer,
+    IconButton,
+    List,
+    ListItem,
+    ListItemButton,
+    ListItemIcon,
+    ListItemText
+} from "@mui/material";
 import Link from "next/link";
+import styles from './Nav.module.css';
 
 export default function Nav() {
     const [state, setState] = useState({
         left: false
     });
+
     const toggleDrawer = (anchor, open) => (event) => {
         if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
             return;
@@ -27,6 +38,7 @@ export default function Nav() {
             role="presentation"
             onClick={toggleDrawer(anchor,false)}
             onKeyDown={toggleDrawer(anchor,false)}
+            className={styles.Box}
         >
             <List>
                 <Link href={`/`}>
@@ -57,7 +69,7 @@ export default function Nav() {
 
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static" sx={{ backgroundColor: '#A5C9CA'}}>
+            <AppBar position="static" className={styles.AppBar}>
                 <Toolbar>
                     <IconButton
                         size="large"
@@ -77,7 +89,7 @@ export default function Nav() {
                         {list('left')}
                     </Drawer>
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                        Code Haven
+                        Cloud Way
                     </Typography>
 
                 </Toolbar>
