@@ -102,6 +102,7 @@ export async function getStaticProps(context) {
     return {
         props: {
             resume: data.resume,
-        }
+        },
+        revalidate: 60
     }
 }

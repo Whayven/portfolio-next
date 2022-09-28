@@ -88,6 +88,7 @@ export async function getStaticProps() {
     return {
         props: {
             page: data.landingPage.data
-        }
+        },
+        revalidate: 60
     }
 }
