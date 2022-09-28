@@ -20,8 +20,6 @@ a {
   box-sizing: border-box;
 }
 
-
-
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
@@ -29,5 +27,13 @@ a {
   body {
     color: #fafafa;
     background: #001E1EFF;
+  }
+
+  .MuiPaper-root {
+    background-color: darkslategrey;
+  }
+
+  .MuiSvgIcon-root {
+    color: #fafafa;
   }
 }
