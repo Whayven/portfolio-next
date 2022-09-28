@@ -7,7 +7,7 @@ body {
 }
 
 body {
-  background-color: #e4eeee;
+  background-color: #fafafa;
   color: #132C33;
 }
 
@@ -27,7 +27,7 @@ a {
     color-scheme: dark;
   }
   body {
-    color: white;
-    background: black;
+    color: #fafafa;
+    background: #001E1EFF;
   }
 }

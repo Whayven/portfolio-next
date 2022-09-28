@@ -17,6 +17,7 @@ import {
     ListItemText
 } from "@mui/material";
 import Link from "next/link";
+import styles from './Nav.module.css';
 
 export default function Nav() {
     const [state, setState] = useState({
@@ -37,6 +38,7 @@ export default function Nav() {
             role="presentation"
             onClick={toggleDrawer(anchor,false)}
             onKeyDown={toggleDrawer(anchor,false)}
+            className={styles.Box}
         >
             <List>
                 <Link href={`/`}>
@@ -67,7 +69,7 @@ export default function Nav() {
 
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static" sx={{ backgroundColor: '#A5C9CA'}}>
+            <AppBar position="static" className={styles.AppBar}>
                 <Toolbar>
                     <IconButton
                         size="large"
