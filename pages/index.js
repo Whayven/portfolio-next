@@ -7,14 +7,13 @@ import {Parallax, useParallaxController} from 'react-scroll-parallax';
 
 
 export default function Home({page}) {
-    const uri = 'http://localhost:1337'
     const parallaxController = useParallaxController();
     return (<Container maxWidth='lg' className={styles.container}>
 
         <main className={styles.main}>
             <Parallax translateY={[-80, 50]}>
                 <Image height={400} width={800} layout={'intrinsic'}
-                       src={uri + page?.attributes?.Cover?.data?.attributes?.url}
+                       src={page?.attributes?.Cover?.data?.attributes?.url}
                        alt={page?.attributes?.Cover?.data?.attributes?.caption}
                        onLoad={() => parallaxController.update()}
                 />
@@ -35,7 +34,7 @@ export default function Home({page}) {
                 <div>
                     {page?.attributes?.certifications?.data.map((cert, i) => {
                         return (<div key={i} className={styles.certification}>
-                            <Image src={uri + cert?.attributes?.Logo?.data?.attributes?.url}
+                            <Image src={cert?.attributes?.Logo?.data?.attributes?.url}
                                    alt={cert?.attributes?.Name}
                                    height={100}
                                    width={100}
