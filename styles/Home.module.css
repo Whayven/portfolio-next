@@ -121,6 +121,11 @@
 
 .section {
   width: 70vw;
+  z-index: 100;
+}
+
+.parallax {
+  z-index: 1;
 }
 
 

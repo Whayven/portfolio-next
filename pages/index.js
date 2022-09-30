@@ -3,21 +3,26 @@ import styles from '../styles/Home.module.css'
 import client from '../util/apolloClient';
 import {GET_LANDING} from '../graphql/pages/queries';
 import Image from "next/image";
+import {Parallax, useParallaxController} from 'react-scroll-parallax';
 
 
 export default function Home({page}) {
+    const parallaxController = useParallaxController();
     return (<Container maxWidth='lg' className={styles.container}>
 
         <main className={styles.main}>
+            <Parallax translateY={[-80, 50]}>
+                <Image height={400} width={800} layout={'intrinsic'}
+                       src={page?.attributes?.Cover?.data?.attributes?.url}
+                       alt={page?.attributes?.Cover?.data?.attributes?.caption}
+                       onLoad={() => parallaxController.update()}
+                />
+            </Parallax>
 
-            <Image height={400} width={800} layout={'intrinsic'}
-                   src={page?.attributes?.Cover?.data?.attributes?.url}
-                   alt={page?.attributes?.Cover?.data?.attributes?.caption}
-            />
-            <Typography variant='h2' textAlign={'center'} gutterBottom>
+            <Typography variant='h2' textAlign={'center'} className={styles.parallax} gutterBottom>
                 {page?.attributes?.Title}
             </Typography>
-            <Typography variant='subtitle1' textAlign={'center'}>
+            <Typography variant='subtitle1' textAlign={'center'} className={styles.parallax}>
                 {page?.attributes?.Description}
             </Typography>
             <br/>
