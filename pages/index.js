@@ -10,7 +10,9 @@ export default function Home({page}) {
 
         <main className={styles.main}>
 
-            <Image height={400} width={800} layout={'intrinsic'}
+            <img
+                height={500}
+                width={800}
                    src={page?.attributes?.Cover?.data?.attributes?.url}
                    alt={page?.attributes?.Cover?.data?.attributes?.caption}
             />
@@ -29,11 +31,11 @@ export default function Home({page}) {
                 <div>
                     {page?.attributes?.certifications?.data.map((cert, i) => {
                         return (<div key={i} className={styles.certification}>
-                            <Image src={cert?.attributes?.Logo?.data?.attributes?.url}
+                            <img src={cert?.attributes?.Logo?.data?.attributes?.url}
                                    alt={cert?.attributes?.Name}
                                    height={100}
                                    width={100}
-                                   layout={'fixed'}/>
+                                   />
                             <br/>
                             <Typography variant='h5' textAlign={'center'}>
                                 {cert?.attributes?.Name}
