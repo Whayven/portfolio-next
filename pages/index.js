@@ -2,7 +2,6 @@ import {Container, Divider, Typography} from "@mui/material";
 import styles from '../styles/Home.module.css'
 import client from '../util/apolloClient';
 import {GET_LANDING} from '../graphql/pages/queries';
-import Image from "next/image";
 import {Parallax, useParallaxController} from 'react-scroll-parallax';
 
 
@@ -12,7 +11,7 @@ export default function Home({page}) {
 
         <main className={styles.main}>
             <Parallax translateY={[-80, 50]}>
-                <Image height={400} width={800} layout={'intrinsic'}
+                <img height={500} width={800}
                        src={page?.attributes?.Cover?.data?.attributes?.url}
                        alt={page?.attributes?.Cover?.data?.attributes?.caption}
                        onLoad={() => parallaxController.update()}
@@ -34,11 +33,11 @@ export default function Home({page}) {
                 <div>
                     {page?.attributes?.certifications?.data.map((cert, i) => {
                         return (<div key={i} className={styles.certification}>
-                            <Image src={cert?.attributes?.Logo?.data?.attributes?.url}
+                            <img src={cert?.attributes?.Logo?.data?.attributes?.url}
                                    alt={cert?.attributes?.Name}
                                    height={100}
                                    width={100}
-                                   layout={'fixed'}/>
+                                   />
                             <br/>
                             <Typography variant='h5' textAlign={'center'}>
                                 {cert?.attributes?.Name}

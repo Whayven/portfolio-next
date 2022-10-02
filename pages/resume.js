@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import {Container, Divider, Typography} from "@mui/material";
 import ReactMarkdown from "react-markdown";
 import styles from '../styles/Home.module.css'
