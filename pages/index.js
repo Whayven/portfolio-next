@@ -2,7 +2,6 @@ import {Container, Divider, Typography} from "@mui/material";
 import styles from '../styles/Home.module.css'
 import client from '../util/apolloClient';
 import {GET_LANDING} from '../graphql/pages/queries';
-import Image from "next/image";
 
 
 export default function Home({page}) {
