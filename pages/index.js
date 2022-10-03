@@ -12,9 +12,10 @@ export default function Home({page}) {
         <main className={styles.main}>
             <Parallax translateY={[-80, 50]}>
                 <img height={500} width={800}
-                       src={page?.attributes?.Cover?.data?.attributes?.url}
-                       alt={page?.attributes?.Cover?.data?.attributes?.caption}
-                       onLoad={() => parallaxController.update()}
+                     className={styles.mainImage}
+                     src={page?.attributes?.Cover?.data?.attributes?.url}
+                     alt={page?.attributes?.Cover?.data?.attributes?.caption}
+                     onLoad={() => parallaxController.update()}
                 />
             </Parallax>
 
@@ -34,10 +35,11 @@ export default function Home({page}) {
                     {page?.attributes?.certifications?.data.map((cert, i) => {
                         return (<div key={i} className={styles.certification}>
                             <img src={cert?.attributes?.Logo?.data?.attributes?.url}
-                                   alt={cert?.attributes?.Name}
-                                   height={100}
-                                   width={100}
-                                   />
+                                 className={styles.certImage}
+                                 alt={cert?.attributes?.Name}
+                                 height={100}
+                                 width={100}
+                            />
                             <br/>
                             <Typography variant='h5' textAlign={'center'}>
                                 {cert?.attributes?.Name}
