@@ -3,6 +3,7 @@ import styles from '../styles/Home.module.css'
 import client from '../util/apolloClient';
 import {GET_LANDING} from '../graphql/pages/queries';
 import {Parallax, useParallaxController} from 'react-scroll-parallax';
+import Image from "next/image";
 
 
 export default function Home({page}) {
@@ -11,11 +12,10 @@ export default function Home({page}) {
 
         <main className={styles.main}>
             <Parallax translateY={[-80, 50]}>
-                <img height={500} width={800}
-                     className={styles.mainImage}
-                     src={page?.attributes?.Cover?.data?.attributes?.url}
-                     alt={page?.attributes?.Cover?.data?.attributes?.caption}
-                     onLoad={() => parallaxController.update()}
+                <Image height={400} width={800} layout={'intrinsic'}
+                       src={page?.attributes?.Cover?.data?.attributes?.url}
+                       alt={page?.attributes?.Cover?.data?.attributes?.caption}
+                       onLoad={() => parallaxController.update()}
                 />
             </Parallax>
 
@@ -34,12 +34,11 @@ export default function Home({page}) {
                 <div>
                     {page?.attributes?.certifications?.data.map((cert, i) => {
                         return (<div key={i} className={styles.certification}>
-                            <img src={cert?.attributes?.Logo?.data?.attributes?.url}
-                                 className={styles.certImage}
-                                 alt={cert?.attributes?.Name}
-                                 height={100}
-                                 width={100}
-                            />
+                            <Image src={cert?.attributes?.Logo?.data?.attributes?.url}
+                                   alt={cert?.attributes?.Name}
+                                   height={100}
+                                   width={100}
+                                   layout={'fixed'}/>
                             <br/>
                             <Typography variant='h5' textAlign={'center'}>
                                 {cert?.attributes?.Name}
@@ -76,13 +75,7 @@ export default function Home({page}) {
 
 
         <footer className={styles.footer}>
-            <a
-                href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Powered by Next.js
-            </a>
+                Developed by Wayne Foster. 2022.
         </footer>
     </Container>)
 }
