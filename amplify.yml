@@ -14,3 +14,5 @@ frontend:
   cache:
     paths:
       - node_modules/**/*
+      - .next/cache/**/*
+  _99e0b843d211dc412527e070aa6d583e.cloud-way.dev. CNAME _fc292a0a5689d57dd87597368be7c091.gbycpywhzv.acm-validations.aws.
