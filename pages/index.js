@@ -13,9 +13,10 @@ export default function Home({page}) {
         <main className={styles.main}>
             <Parallax translateY={[-80, 50]}>
                 <ExportedImage height={400} width={800} layout={'intrinsic'}
-                       src={page?.attributes?.Cover?.data?.attributes?.url}
-                       alt={page?.attributes?.Cover?.data?.attributes?.caption}
-                       onLoad={() => parallaxController.update()}
+                               src={page?.attributes?.Cover?.data?.attributes?.url}
+                               alt={page?.attributes?.Cover?.data?.attributes?.caption}
+                               onLoad={() => parallaxController.update()}
+                               priority
                 />
             </Parallax>
 
@@ -35,10 +36,10 @@ export default function Home({page}) {
                     {page?.attributes?.certifications?.data.map((cert, i) => {
                         return (<div key={i} className={styles.certification}>
                             <ExportedImage src={cert?.attributes?.Logo?.data?.attributes?.url}
-                                   alt={cert?.attributes?.Name}
-                                   height={100}
-                                   width={100}
-                                   layout={'fixed'}/>
+                                           alt={cert?.attributes?.Name}
+                                           height={100}
+                                           width={100}
+                                           layout={'fixed'}/>
                             <br/>
                             <Typography variant='h5' textAlign={'center'}>
                                 {cert?.attributes?.Name}
@@ -75,7 +76,7 @@ export default function Home({page}) {
 
 
         <footer className={styles.footer}>
-                Developed by Wayne Foster. 2022.
+            Developed by Wayne Foster. 2022.
         </footer>
     </Container>)
 }

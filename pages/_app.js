@@ -10,7 +10,7 @@ import {ParallaxProvider} from "react-scroll-parallax";
 
 function MyApp({Component, pageProps}) {
     return (
-        <StyledEngineProvider>
+        <StyledEngineProvider injectFirst>
             <ParallaxProvider>
                 <Head>
                     <title>Wayne Foster Jr</title>
