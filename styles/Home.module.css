@@ -158,10 +158,10 @@
     height: auto;
 }
 
-.parallaxButton {
+.linkButton {
     display: flex;
     justify-content: center;
-    margin-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 
@@ -191,6 +191,13 @@
         padding: 0.4rem;
         max-width: 100%;
         height: auto;
+    }
+
+    .card {
+        height: 500px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     .card h2, .resumeCard h2, .parallaxCard h2 {

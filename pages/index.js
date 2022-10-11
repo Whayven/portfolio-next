@@ -1,4 +1,4 @@
-import {Container, Divider, Typography} from "@mui/material";
+import {Container, Divider, Typography, Button} from "@mui/material";
 import Carousel from 'react-material-ui-carousel'
 import styles from '../styles/Home.module.css'
 import client from '../util/apolloClient';
@@ -108,6 +108,8 @@ export default function Home({page}) {
                             <Typography variant='body2' gutterBottom>
                                 {project?.attributes?.Description}
                             </Typography>
+                            <br />
+                            <Button variant={'text'} className={styles.linkButton}>Github</Button>
                         </div>)
                     })}
                 </Carousel>
