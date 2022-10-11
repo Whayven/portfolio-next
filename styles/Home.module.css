@@ -90,13 +90,14 @@
     text-decoration: none;
     transition: color 0.2s ease, border-color 0.2s ease;
     max-width: 50vw;
+    height: auto;
 }
 
 .card, .parallaxCard {
     padding: 2rem;
     background-color: rgba(0, 0, 0, .3);
     border-radius: 4px;
-    height: 250px;
+    height: 350px;
 }
 
 .card h2, .resumeCard h2 {
@@ -164,33 +165,44 @@
 }
 
 
-@media (max-width: 800px) {
+@media (max-width: 1200px) {
     .grid {
         width: 100%;
         flex-direction: column;
     }
 
+    .main {
+        min-height: 80vh;
+    }
+
     .container {
         padding: 0 1.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     .section {
         width: 100%;
+        min-height: fit-content;
     }
 
-    .card {
-        padding: 0.1rem;
+    .card, .parallaxCard, .resumeCard {
+        padding: 0.4rem;
         max-width: 100%;
+        height: auto;
     }
 
-    .card h2 {
+    .card h2, .resumeCard h2, .parallaxCard h2 {
         margin: 0 0 0.2rem 0;
-        font-size: 1.6rem;
+        font-size: 1.8rem;
+        padding: 0.4rem;
     }
 
-    .card p {
+    .card p, .parallaxCard p {
         margin: 0;
-        font-size: 1.1rem;
+        padding: 0.2rem 0.2rem 2rem 0.2rem;
+        font-size: 0.9rem;
         line-height: 1.5;
     }
 }
