@@ -117,10 +117,13 @@
 
 .divider {
   margin-block-end: 1em;
+  font-size: 1.5rem;
+  font-weight: lighter;
 }
 
 .section {
   width: 70vw;
+  margin-bottom: 1rem;
   z-index: 100;
 }
 
@@ -138,6 +141,10 @@
   width: 100%;
   max-width: 100px;
   height: auto;
+}
+
+.carousel {
+  
 }
 
 
