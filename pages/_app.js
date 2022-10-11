@@ -13,9 +13,9 @@ function MyApp({Component, pageProps}) {
         <StyledEngineProvider injectFirst>
             <ParallaxProvider>
                 <Head>
-                    <title>Wayne Foster Jr</title>
+                    <title>Cloud Way</title>
                     <meta name="description" content="Wayne Foster Jr - 2022"/>
-                    <link rel="icon" href="/favicon.ico"/>
+                    <link rel="icon" href="/favicon.png"/>
                 </Head>
                 <Nav/>
                 <Component {...pageProps} />
