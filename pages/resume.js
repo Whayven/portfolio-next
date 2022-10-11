@@ -14,7 +14,7 @@ export default function Resume({resume}) {
                 Wayne Foster Jr - {resume.data ? resume?.data?.attributes?.Title : 'Web Developer'}
             </Typography>
 
-            <Typography variant='subtitle1' textAlign='center'>
+            <Typography variant='subtitle1' textAlign='center' gutterBottom>
                 {resume.data ? resume?.data?.attributes?.Statement : 'Lorem Imps um'}
             </Typography>
 
@@ -39,7 +39,7 @@ export default function Resume({resume}) {
 
                 <div>
                     {resume?.data?.attributes?.projects?.data.map((project, i) => {
-                        return (<div key={i} className={styles.card}>
+                        return (<div key={i} className={styles.resumeCard}>
                             <Typography variant='h2'>
                                 {project?.attributes?.Title}
                             </Typography>
@@ -59,7 +59,7 @@ export default function Resume({resume}) {
 
                 <div>
                     {resume?.data?.attributes?.works?.data.map((job, i) => {
-                        return (<div key={i} className={styles.card}>
+                        return (<div key={i} className={styles.resumeCard}>
                             <Typography variant='h2'>
                                 {job?.attributes?.Company}
                             </Typography>
@@ -78,19 +78,6 @@ export default function Resume({resume}) {
                 </div>
             </Container>
         </main>
-
-
-        <footer className={styles.footer}>
-            <a
-                href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Powered by Next.js
-                <span className={styles.logo}>
-          </span>
-            </a>
-        </footer>
     </Container>)
 }
 
@@ -101,7 +88,6 @@ export async function getStaticProps(context) {
     return {
         props: {
             resume: data.resume,
-        },
-        revalidate: 60
+        }, revalidate: 60
     }
 }

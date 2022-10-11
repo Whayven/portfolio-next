@@ -7,6 +7,7 @@ import Head from "next/head";
 import Nav from '../components/Nav';
 import {StyledEngineProvider} from "@mui/material/styles";
 import {ParallaxProvider} from "react-scroll-parallax";
+import Footer from "../components/Footer";
 
 function MyApp({Component, pageProps}) {
     return (
@@ -19,6 +20,7 @@ function MyApp({Component, pageProps}) {
                 </Head>
                 <Nav/>
                 <Component {...pageProps} />
+                <Footer />
             </ParallaxProvider>
         </StyledEngineProvider>
 

@@ -14,6 +14,7 @@ export default function Home({page}) {
 
     return (<Container maxWidth='lg' className={styles.container}>
 
+        {/* Main Parallax Image */}
         <main className={styles.main}>
             <Parallax translateY={[-80, 50]}>
                 <ExportedImage height={400} width={800} layout={'intrinsic'}
@@ -24,58 +25,76 @@ export default function Home({page}) {
                 />
             </Parallax>
 
+            {/* Landing Head Info */}
             <Container className={styles.parallax}>
-                <Typography variant='h2' textAlign={'center'} gutterBottom>
-                    {page?.attributes?.Title}
-                </Typography>
-                <Typography variant='body1' textAlign={'center'} paragraph gutterBottom>
-                    {page?.attributes?.Description}
-                </Typography>
+                <div className={styles.parallaxCard}>
+                    <Typography variant='h2' textAlign={'center'} gutterBottom>
+                        {page?.attributes?.Title}
+                    </Typography>
+
+                    <Typography variant='body1' textAlign={'center'} paragraph gutterBottom>
+                        {page?.attributes?.Description}
+                    </Typography>
+                </div>
             </Container>
             <br/>
 
-
+            {/* Certifications Section */}
             <Container className={styles.section}>
                 <Divider className={styles.divider}>
                     Certifications
                 </Divider>
                 <Carousel interval={8000}
+                          animation={"slide"}
+                          duration={800}
+                          indicators={false}
                           indicatorIconButtonProps={{
                               style: {
                                   padding: '3px',
-                                  color: '#'
                               }
                           }}
                           indicatorContainerProps={{
                               style: {
-                                  marginTop: '-0.5rem', // 5
+                                  marginTop: '-0.5rem',
                               }
                           }}>
+                    {/* Loop through certifications data and display */}
                     {page?.attributes?.certifications?.data.map((cert, i) => {
-                        return (
-                            <div key={i} className={styles.certification}>
-                                <ExportedImage
-                                    src={process.env.NODE_ENV === 'development' ? uri + cert?.attributes?.Logo?.data?.attributes?.url : cert?.attributes?.Logo?.data?.attributes?.url}
-                                    alt={cert?.attributes?.Name}
-                                    height={100}
-                                    width={100}
-                                    layout={'fixed'}/>
-                                <br/>
-                                <Typography variant='h5' textAlign={'center'}>
-                                    {cert?.attributes?.Name}
-                                </Typography>
-                            </div>
-                        )
+                        return (<div key={i} className={styles.certification}>
+                            <ExportedImage
+                                src={process.env.NODE_ENV === 'development' ? uri + cert?.attributes?.Logo?.data?.attributes?.url : cert?.attributes?.Logo?.data?.attributes?.url}
+                                alt={cert?.attributes?.Name}
+                                height={100}
+                                width={100}
+                                layout={'fixed'}/>
+                            <br/>
+                            <Typography variant='h5' textAlign={'center'}>
+                                {cert?.attributes?.Name}
+                            </Typography>
+                        </div>)
                     })}
                 </Carousel>
             </Container>
-
+            {/* Projects Section */}
             <Container className={styles.section}>
                 <Divider className={styles.divider}>
                     Projects
                 </Divider>
-
-                <div>
+                <Carousel interval={8000}
+                          animation={"slide"}
+                          duration={800}
+                          indicators={false}
+                          indicatorIconButtonProps={{
+                              style: {
+                                  padding: '3px'
+                              }
+                          }}
+                          indicatorContainerProps={{
+                              style: {
+                                  marginTop: '1.5rem',
+                              }
+                          }}>
+                    {/* Loop through projects data and display */}
                     {page?.attributes?.projects?.data.map((project, i) => {
                         return (<div key={i} className={styles.card}>
                             <a href={project?.attributes?.Url || ''}
@@ -86,19 +105,15 @@ export default function Home({page}) {
                                 </Typography>
                             </a>
                             <br/>
-                            <Typography variant='body2'>
+                            <Typography variant='body2' gutterBottom>
                                 {project?.attributes?.Description}
                             </Typography>
                         </div>)
                     })}
-                </div>
+                </Carousel>
+
             </Container>
         </main>
-
-
-        <footer className={styles.footer}>
-            Developed by Wayne Foster &copy; 2022
-        </footer>
     </Container>)
 }
 
