@@ -26,7 +26,7 @@ export default function Resume({resume}) {
                 </Divider>
 
                 <div>
-                    <ul>
+                    <ul className={styles.skills}>
                         {resume?.data?.attributes?.skills?.data.map((skillObj, i) => {
                             return <li key={i}>{skillObj?.attributes?.Name}</li>
                         })}

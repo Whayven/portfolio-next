@@ -120,6 +120,18 @@
     padding: 5px;
 }
 
+.skills {
+    /* set the layout to grid: */
+    display: grid;
+    /* define the number of rows you
+       require: */
+    grid-template-rows: repeat(6, 1fr);
+    /* set the flow of the grid to follow
+       a columnar layout: */
+    grid-auto-flow: column;
+    justify-content: space-evenly;
+}
+
 .logo {
     height: 1em;
     margin-left: 0.5rem;
