@@ -12,7 +12,7 @@ export default function Resume({resume}) {
     return (<Container maxWidth='lg' className={styles.container}>
 
         <main className={styles.main}>
-            <Typography variant='h3' gutterBottom textAlign='center'>
+            <Typography variant='h3' gutterBottom textAlign='center' className={styles.title}>
                 Wayne Foster Jr - {resume.data ? resume?.data?.attributes?.Title : 'Web Developer'}
             </Typography>
 

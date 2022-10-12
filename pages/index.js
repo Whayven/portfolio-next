@@ -44,21 +44,7 @@ export default function Home({page}) {
                 <Divider className={styles.divider}>
                     Certifications
                 </Divider>
-                <Carousel interval={8000}
-                          animation={"slide"}
-                          duration={800}
-                          indicators={false}
-                          indicatorIconButtonProps={{
-                              style: {
-                                  padding: '3px',
-                              }
-                          }}
-                          indicatorContainerProps={{
-                              style: {
-                                  marginTop: '-0.5rem',
-                              }
-                          }}>
-                    {/* Loop through certifications data and display */}
+                <div className={styles.certificationsList}>
                     {page?.attributes?.certifications?.data.map((cert, i) => {
                         return (<div key={i} className={styles.certification}>
                             <ExportedImage
@@ -73,7 +59,9 @@ export default function Home({page}) {
                             </Typography>
                         </div>)
                     })}
-                </Carousel>
+                </div>
+
+
             </Container>
             {/* Projects Section */}
             <Container className={styles.section}>

@@ -16,7 +16,7 @@
     display: flex;
     flex: 1;
     padding: 2rem 0;
-    border-top: thin solid #395B64;
+    border-top: thin solid #0A537AFF;
     justify-content: center;
     align-items: center;
     max-height: 10vh;
@@ -28,6 +28,16 @@
     align-items: center;
     justify-content: center;
     height: 25vh;
+}
+
+.certification h5 {
+    font-size: 1.2rem;
+}
+
+.certificationsList {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
 }
 
 .footer a {
@@ -49,9 +59,10 @@
 }
 
 .title {
-    margin: 0;
+    margin: 0 0 1rem 0;
     line-height: 1.15;
     font-size: 2.5rem;
+    cursor: default;
 }
 
 .title,
@@ -109,8 +120,16 @@
     transition: 0.3s;
 }
 
+.resumeCard h2, .parallaxCard h2 {
+    cursor: default;
+}
+
+.card h2 {
+    cursor: pointer;
+}
+
 .card h2:hover {
-    color: #0070f3;
+    color: #03b5ff;
 }
 
 .card p, .resumeCard p {
@@ -130,6 +149,7 @@
        a columnar layout: */
     grid-auto-flow: column;
     justify-content: space-evenly;
+    cursor: default;
 }
 
 .logo {
@@ -138,17 +158,18 @@
 }
 
 .divider::before {
-    border-color: #395B64;
+    border-color: #0A537AFF;
 }
 
 .divider::after {
-    border-color: #395B64;
+    border-color: #0A537AFF;
 }
 
 .divider {
     margin-block-end: 1em;
     font-size: 1.5rem;
     font-weight: lighter;
+    cursor: default;
 }
 
 .section {
@@ -174,9 +195,11 @@
 }
 
 .linkButton {
-    display: flex;
-    justify-content: center;
-    padding-bottom: 1rem;
+    color: #03b5ff;
+}
+
+.linkButton:hover {
+    color: #0070f3;
 }
 
 
@@ -246,10 +269,17 @@
     }
 }
 
+@media (max-width: 400px) {
+    .jobHeader {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
 @media (prefers-color-scheme: dark) {
     .card,
     .footer {
-        border-color: #222;
+        border-color: #395B64;
     }
 
     .code {
