@@ -96,7 +96,7 @@
 .card, .parallaxCard {
     padding: 2rem;
     background-color: rgba(0, 0, 0, .3);
-    border-radius: 4px;
+    border-radius: 6px;
     height: 350px;
 }
 
@@ -206,9 +206,26 @@
         padding: 0.4rem;
     }
 
+    .resumeCard h6, .resumeCard p {
+        padding: 0.4rem;
+    }
+
+    .jobHeader {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+
+    .jobDate {
+        padding: 0.4rem;
+        margin: 0 0 0.2rem 0;
+        font-weight: normal;
+    }
+
+
     .card p, .parallaxCard p {
         margin: 0;
-        padding: 0.2rem 0.2rem 2rem 0.2rem;
+        padding: 1rem;
         font-size: 0.9rem;
         line-height: 1.5;
     }
