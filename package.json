@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && next export && next-image-export-optimizer",
+    "build": "next build && next export && next-export-optimize-images",
     "start": "next start",
     "lint": "next lint"
   },
@@ -18,7 +18,7 @@
     "graphql": "^16.6.0",
     "moment": "^2.29.4",
     "next": "12.3.0",
-    "next-image-export-optimizer": "^0.14.5",
+    "next-export-optimize-images": "^1.9.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-markdown": "^8.0.3",

@@ -4,9 +4,9 @@ import styles from '../styles/Home.module.css'
 import client from '../util/apolloClient';
 import {GET_LANDING} from '../graphql/pages/queries';
 import {Parallax, useParallaxController} from 'react-scroll-parallax';
-import ExportedImage from "next-image-export-optimizer";
 import process from "../next.config";
 import {useState} from "react";
+import Image from "next/image";
 
 
 export default function Home({page}) {
@@ -17,7 +17,7 @@ export default function Home({page}) {
         {/* Main Parallax Image */}
         <main className={styles.main}>
             <Parallax translateY={[-80, 50]}>
-                <ExportedImage height={400} width={800} layout={'intrinsic'}
+                <Image height={400} width={800} layout={'intrinsic'}
                                src={process.env.NODE_ENV === 'development' ? uri + page?.attributes?.Cover?.data?.attributes?.url : page?.attributes?.Cover?.data?.attributes?.url}
                                alt={page?.attributes?.Cover?.data?.attributes?.caption}
                                onLoad={() => parallaxController.update()}
@@ -47,7 +47,7 @@ export default function Home({page}) {
                 <div className={styles.certificationsList}>
                     {page?.attributes?.certifications?.data.map((cert, i) => {
                         return (<div key={i} className={styles.certification}>
-                            <ExportedImage
+                            <Image
                                 src={process.env.NODE_ENV === 'development' ? uri + cert?.attributes?.Logo?.data?.attributes?.url : cert?.attributes?.Logo?.data?.attributes?.url}
                                 alt={cert?.attributes?.Name}
                                 height={100}
