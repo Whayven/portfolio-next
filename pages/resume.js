@@ -3,9 +3,11 @@ import ReactMarkdown from "react-markdown";
 import styles from '../styles/Home.module.css'
 import client from '../util/apolloClient';
 import {GET_RESUME} from '../graphql/resume/queries';
+import moment from "moment";
 
 
 export default function Resume({resume}) {
+    const formatDate = date => moment(date).format('MMMM Do YYYY');
 
     return (<Container maxWidth='lg' className={styles.container}>
 
@@ -60,9 +62,15 @@ export default function Resume({resume}) {
                 <div>
                     {resume?.data?.attributes?.works?.data.map((job, i) => {
                         return (<div key={i} className={styles.resumeCard}>
-                            <Typography variant='h2'>
-                                {job?.attributes?.Company}
-                            </Typography>
+                            <span className={styles.jobHeader}>
+                                <Typography variant='h2'>
+                                    {job?.attributes?.Company}
+                                </Typography>
+                                <Typography variant={'subtitle2'} className={styles.jobDate}>
+                                    {formatDate(job?.attributes?.Start)} - {job?.attributes?.End ? job?.attributes?.End : 'Present'}
+                                </Typography>
+                            </span>
+
                             <Typography variant="subtitle1">
                                 {job?.attributes?.Title}
                             </Typography>
@@ -88,6 +96,6 @@ export async function getStaticProps(context) {
     return {
         props: {
             resume: data.resume,
-        }, revalidate: 60
+        }
     }
 }

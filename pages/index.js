@@ -1,4 +1,4 @@
-import {Container, Divider, Typography} from "@mui/material";
+import {Container, Divider, Typography, Button} from "@mui/material";
 import Carousel from 'react-material-ui-carousel'
 import styles from '../styles/Home.module.css'
 import client from '../util/apolloClient';
@@ -8,10 +8,10 @@ import ExportedImage from "next-image-export-optimizer";
 import process from "../next.config";
 import {useState} from "react";
 
+
 export default function Home({page}) {
     const [uri] = useState('http://localhost:1337');
     const parallaxController = useParallaxController();
-
     return (<Container maxWidth='lg' className={styles.container}>
 
         {/* Main Parallax Image */}
@@ -108,6 +108,8 @@ export default function Home({page}) {
                             <Typography variant='body2' gutterBottom>
                                 {project?.attributes?.Description}
                             </Typography>
+                            <br/>
+                            <Button variant={'text'} className={styles.linkButton}>Github</Button>
                         </div>)
                     })}
                 </Carousel>
@@ -124,6 +126,6 @@ export async function getStaticProps() {
     return {
         props: {
             page: data.landingPage.data
-        }, revalidate: 60
+        }
     }
 }
