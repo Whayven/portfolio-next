@@ -7,7 +7,7 @@ import moment from "moment";
 
 
 export default function Resume({resume}) {
-    const formatDate = date => moment(date).format('MMMM Do YYYY');
+    const formatDate = date => moment(date).format('MMMM Do, YYYY');
 
     return (<Container maxWidth='lg' className={styles.container}>
 
@@ -67,7 +67,7 @@ export default function Resume({resume}) {
                                     {job?.attributes?.Company}
                                 </Typography>
                                 <Typography variant={'subtitle2'} className={styles.jobDate}>
-                                    {formatDate(job?.attributes?.Start)} - {job?.attributes?.End ? job?.attributes?.End : 'Present'}
+                                    {formatDate(job?.attributes?.Start)} - {job?.attributes?.End ? formatDate(job?.attributes?.End) : 'Present'}
                                 </Typography>
                             </span>
 

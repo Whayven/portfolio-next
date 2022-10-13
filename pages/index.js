@@ -96,7 +96,9 @@ export default function Home({page}) {
                             <br/>
                             <a href={project?.attributes?.Url || ''}
                                target={'_blank'}
-                               rel="noopener noreferrer">
+                               rel="noopener noreferrer"
+                               style={{display: "inline-flex", alignItems: 'center', justifyContent: 'center'}}
+                            >
                                 <Button variant={'text'} className={styles.linkButton}>Github</Button>
                             </a>
                         </div>)
