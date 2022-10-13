@@ -132,10 +132,10 @@
 }
 
 .card h2 {
-    cursor: pointer;
+    cursor: default;
 }
 
-.card h2:hover {
+.card:hover h2 {
     color: #03b5ff;
 }
 
@@ -151,7 +151,7 @@
     display: grid;
     /* define the number of rows you
        require: */
-    grid-template-rows: repeat(6, 1fr);
+    grid-template-rows: repeat(5, 1fr);
     /* set the flow of the grid to follow
        a columnar layout: */
     grid-auto-flow: column;
