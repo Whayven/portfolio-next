@@ -47,6 +47,15 @@ query GET_LANDING {
             }
           }
         }
+        posts {
+          data {
+            id
+            attributes {
+              Title
+              Description
+            }
+          }
+        }
       }
     }
   }

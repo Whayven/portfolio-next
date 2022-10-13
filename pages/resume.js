@@ -1,7 +1,7 @@
 import {Container, Divider, Typography} from "@mui/material";
 import ReactMarkdown from "react-markdown";
 import styles from '../styles/Home.module.css'
-import client from '../util/apolloClient';
+import {initializeApollo} from '../util/apolloClient';
 import {GET_RESUME} from '../graphql/resume/queries';
 import moment from "moment";
 
@@ -12,7 +12,7 @@ export default function Resume({resume}) {
     return (<Container maxWidth='lg' className={styles.container}>
 
         <main className={styles.main}>
-            <Typography variant='h3' gutterBottom textAlign='center'>
+            <Typography variant='h3' gutterBottom textAlign='center' className={styles.title}>
                 Wayne Foster Jr - {resume.data ? resume?.data?.attributes?.Title : 'Web Developer'}
             </Typography>
 
@@ -26,7 +26,7 @@ export default function Resume({resume}) {
                 </Divider>
 
                 <div>
-                    <ul>
+                    <ul className={styles.skills}>
                         {resume?.data?.attributes?.skills?.data.map((skillObj, i) => {
                             return <li key={i}>{skillObj?.attributes?.Name}</li>
                         })}
@@ -89,7 +89,8 @@ export default function Resume({resume}) {
     </Container>)
 }
 
-export async function getStaticProps(context) {
+export async function getStaticProps() {
+    const client = initializeApollo();
     const {data} = await client.query({
         query: GET_RESUME
     });

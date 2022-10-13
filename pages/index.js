@@ -1,12 +1,13 @@
 import {Container, Divider, Typography, Button} from "@mui/material";
 import Carousel from 'react-material-ui-carousel'
 import styles from '../styles/Home.module.css'
-import client from '../util/apolloClient';
+import {initializeApollo} from '../util/apolloClient';
 import {GET_LANDING} from '../graphql/pages/queries';
 import {Parallax, useParallaxController} from 'react-scroll-parallax';
-import ExportedImage from "next-image-export-optimizer";
 import process from "../next.config";
 import {useState} from "react";
+import Image from "next/image";
+import Link from "next/link";
 
 
 export default function Home({page}) {
@@ -17,11 +18,11 @@ export default function Home({page}) {
         {/* Main Parallax Image */}
         <main className={styles.main}>
             <Parallax translateY={[-80, 50]}>
-                <ExportedImage height={400} width={800} layout={'intrinsic'}
-                               src={process.env.NODE_ENV === 'development' ? uri + page?.attributes?.Cover?.data?.attributes?.url : page?.attributes?.Cover?.data?.attributes?.url}
-                               alt={page?.attributes?.Cover?.data?.attributes?.caption}
-                               onLoad={() => parallaxController.update()}
-                               priority={true}
+                <Image height={400} width={800} layout={'intrinsic'}
+                       src={process.env.NODE_ENV === 'development' ? uri + page?.attributes?.Cover?.data?.attributes?.url : page?.attributes?.Cover?.data?.attributes?.url}
+                       alt={page?.attributes?.Cover?.data?.attributes?.caption}
+                       onLoad={() => parallaxController.update()}
+                       priority={true}
                 />
             </Parallax>
 
@@ -44,24 +45,10 @@ export default function Home({page}) {
                 <Divider className={styles.divider}>
                     Certifications
                 </Divider>
-                <Carousel interval={8000}
-                          animation={"slide"}
-                          duration={800}
-                          indicators={false}
-                          indicatorIconButtonProps={{
-                              style: {
-                                  padding: '3px',
-                              }
-                          }}
-                          indicatorContainerProps={{
-                              style: {
-                                  marginTop: '-0.5rem',
-                              }
-                          }}>
-                    {/* Loop through certifications data and display */}
+                <div className={styles.certificationsList}>
                     {page?.attributes?.certifications?.data.map((cert, i) => {
                         return (<div key={i} className={styles.certification}>
-                            <ExportedImage
+                            <Image
                                 src={process.env.NODE_ENV === 'development' ? uri + cert?.attributes?.Logo?.data?.attributes?.url : cert?.attributes?.Logo?.data?.attributes?.url}
                                 alt={cert?.attributes?.Name}
                                 height={100}
@@ -73,7 +60,9 @@ export default function Home({page}) {
                             </Typography>
                         </div>)
                     })}
-                </Carousel>
+                </div>
+
+
             </Container>
             {/* Projects Section */}
             <Container className={styles.section}>
@@ -97,29 +86,66 @@ export default function Home({page}) {
                     {/* Loop through projects data and display */}
                     {page?.attributes?.projects?.data.map((project, i) => {
                         return (<div key={i} className={styles.card}>
-                            <a href={project?.attributes?.Url || ''}
-                               target={'_blank'}
-                               rel="noopener noreferrer">
-                                <Typography variant='h2'>
-                                    {project?.attributes?.Title}
-                                </Typography>
-                            </a>
+                            <Typography variant='h2'>
+                                {project?.attributes?.Title}
+                            </Typography>
                             <br/>
                             <Typography variant='body2' gutterBottom>
                                 {project?.attributes?.Description}
                             </Typography>
                             <br/>
-                            <Button variant={'text'} className={styles.linkButton}>Github</Button>
+                            <a href={project?.attributes?.Url || ''}
+                               target={'_blank'}
+                               rel="noopener noreferrer">
+                                <Button variant={'text'} className={styles.linkButton}>Github</Button>
+                            </a>
                         </div>)
                     })}
                 </Carousel>
-
+            </Container>
+            {/* Projects Section */}
+            <Container className={styles.section}>
+                <Divider className={styles.divider}>
+                    Blog Posts
+                </Divider>
+                <Carousel interval={8000}
+                          animation={"slide"}
+                          duration={800}
+                          indicators={false}
+                          indicatorIconButtonProps={{
+                              style: {
+                                  padding: '3px'
+                              }
+                          }}
+                          indicatorContainerProps={{
+                              style: {
+                                  marginTop: '1.5rem',
+                              }
+                          }}>
+                    {/* Loop through posts data and display */}
+                    {page?.attributes?.posts?.data.map((post, i) => {
+                        return (<div key={i} className={styles.card}>
+                            <Typography variant='h2'>
+                                {post?.attributes?.Title}
+                            </Typography>
+                            <br/>
+                            <Typography variant='body2' gutterBottom>
+                                {post?.attributes?.Description}
+                            </Typography>
+                            <br/>
+                            <Link href={`/posts/${post?.id}`}>
+                                <Button variant={'text'} className={styles.linkButton}>View Post</Button>
+                            </Link>
+                        </div>)
+                    })}
+                </Carousel>
             </Container>
         </main>
     </Container>)
 }
 
 export async function getStaticProps() {
+    const client = initializeApollo();
     const {data} = await client.query({
         query: GET_LANDING
     });
