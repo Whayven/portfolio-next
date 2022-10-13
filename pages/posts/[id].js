@@ -1,26 +1,29 @@
 import ReactMarkdown from "react-markdown";
-import {GET_POSTS} from "../../../graphql/posts/queries";
-import {GET_POST} from "../../../graphql/posts/queries";
+import {GET_POSTS} from "../../graphql/posts/queries";
+import {GET_POST} from "../../graphql/posts/queries";
 import {Typography} from "@mui/material";
-import {initializeApollo, addApolloState} from '../../../util/apolloClient'
+import {initializeApollo, addApolloState} from '../../util/apolloClient'
 import moment from "moment/moment";
 
 export default function Post({post}) {
+    const formatDate = date => moment(date).format('dddd, MMMM Do YYYY');
     return (
         <>
-            <Typography variant={'h2'} textAlign={'left'}
-                        sx={{margin: '2rem 0 0 0', padding: '0rem 0 0 2rem', cursor: 'default'}}>
-                {post?.data?.attributes?.Title}
-            </Typography>
-            <Typography variant={'subtitle1'} sx={{
-                padding: '0.8rem 0 0 2rem',
-                cursor: 'default'
-            }}>{moment(post?.data?.attributes?.publishedAt).format('dddd, MMMM Do YYYY')}</Typography>
-            <br/>
-            <Typography variant={'body1'} textAlign={'left'} sx={{padding: '2rem', width: '80%'}
-            }>
-                <ReactMarkdown>{post?.data?.attributes?.Content}</ReactMarkdown>
-            </Typography>
+            <div style={{width: '80%', margin: '1rem auto'}}>
+                <Typography variant={'h3'} textAlign={'left'}
+                            sx={{margin: '2rem 0 0 0', padding: '0rem 0 0 2rem', cursor: 'default'}}>
+                    {post?.data?.attributes?.Title}
+                </Typography>
+                <Typography variant={'subtitle1'} sx={{
+                    padding: '0.8rem 0 0 2rem',
+                    cursor: 'default'
+                }}>{formatDate(post?.data?.attributes?.publishedAt)}</Typography>
+                <br/>
+                <Typography variant={'body1'} textAlign={'left'} sx={{padding: '2rem'}}>
+                    <ReactMarkdown>{post?.data?.attributes?.Content}</ReactMarkdown>
+                </Typography>
+            </div>
+
         </>
     )
 }
