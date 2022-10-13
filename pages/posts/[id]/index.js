@@ -10,16 +10,16 @@ export default function Post({post}) {
         <>
             <Typography variant={'h2'} textAlign={'left'}
                         sx={{margin: '2rem 0 0 0', padding: '0rem 0 0 2rem', cursor: 'default'}}>
-                {post?.data?.post?.data?.attributes?.Title}
+                {post?.data?.attributes?.Title}
             </Typography>
             <Typography variant={'subtitle1'} sx={{
                 padding: '0.8rem 0 0 2rem',
                 cursor: 'default'
-            }}>{moment(post?.data?.post?.data?.attributes?.publishedAt).format('MMMM, dddd YYYY')}</Typography>
+            }}>{moment(post?.data?.attributes?.publishedAt).format('dddd, MMMM Do YYYY')}</Typography>
             <br/>
             <Typography variant={'body1'} textAlign={'left'} sx={{padding: '2rem', width: '80%'}
             }>
-                <ReactMarkdown>{post?.data?.post?.data?.attributes?.Content}</ReactMarkdown>
+                <ReactMarkdown>{post?.data?.attributes?.Content}</ReactMarkdown>
             </Typography>
         </>
     )
@@ -47,7 +47,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({params}) {
     const client = initializeApollo();
-    const post = await client.query({
+    const blogPost = await client.query({
         query: GET_POST,
         variables: {postId: params.id}
     })
@@ -55,14 +55,16 @@ export async function getStaticProps({params}) {
     // Add this with fallback: "blocking"
     // So that if we do not have a post on production,
     // the 404 is served
-    if (!post) {
+    if (!blogPost) {
         return {
             notFound: true,
         };
     }
 
     return addApolloState(client, {
-        props: {post},
+        props: {
+            post: blogPost.data.post
+        },
         revalidate: 1,
     })
 }
