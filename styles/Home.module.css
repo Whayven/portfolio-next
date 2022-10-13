@@ -112,6 +112,13 @@
 
 .card {
     height: 350px;
+    transition: 0.5s;
+}
+
+.card:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+    transform: scale(1.01);
+    box-shadow: #111111 0.5rem 0.7rem;
 }
 
 .card h2, .resumeCard h2 {
@@ -202,6 +209,19 @@
     color: #0070f3;
 }
 
+.jobHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.jobDate {
+    padding: 0.4rem;
+    margin: 0 0 0.2rem 0;
+    font-weight: normal;
+}
+
+
 
 @media (max-width: 1200px) {
     .grid {
@@ -225,6 +245,11 @@
         min-height: fit-content;
     }
 
+    .certificationsList {
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
     .card, .parallaxCard, .resumeCard {
         padding: 0.4rem;
         max-width: 100%;
@@ -232,7 +257,7 @@
     }
 
     .card {
-        height: 500px;
+        height: 400px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -247,19 +272,6 @@
     .resumeCard h6, .resumeCard p {
         padding: 0.4rem;
     }
-
-    .jobHeader {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-    }
-
-    .jobDate {
-        padding: 0.4rem;
-        margin: 0 0 0.2rem 0;
-        font-weight: normal;
-    }
-
 
     .card p, .parallaxCard p {
         margin: 0;

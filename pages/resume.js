@@ -1,7 +1,7 @@
 import {Container, Divider, Typography} from "@mui/material";
 import ReactMarkdown from "react-markdown";
 import styles from '../styles/Home.module.css'
-import client from '../util/apolloClient';
+import {initializeApollo} from '../util/apolloClient';
 import {GET_RESUME} from '../graphql/resume/queries';
 import moment from "moment";
 
@@ -89,7 +89,8 @@ export default function Resume({resume}) {
     </Container>)
 }
 
-export async function getStaticProps(context) {
+export async function getStaticProps() {
+    const client = initializeApollo();
     const {data} = await client.query({
         query: GET_RESUME
     });

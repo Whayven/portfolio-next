@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import DescriptionIcon from '@mui/icons-material/Description';
 import MenuIcon from '@mui/icons-material/Menu';
 import HomeIcon from '@mui/icons-material/Home';
+import RssFeedIcon from '@mui/icons-material/RssFeed';
 import {
     Divider,
     Drawer,
@@ -62,6 +63,18 @@ export default function Nav() {
                         </ListItemButton>
                     </ListItem>
                 </Link>
+                <Divider />
+                <Link href={'/blog'}>
+                    <ListItem key={'Blog'} disablePadding>
+                        <ListItemButton>
+                            <ListItemIcon>
+                                <RssFeedIcon />
+                            </ListItemIcon>
+                            <ListItemText primary={'Blog'} />
+                        </ListItemButton>
+                    </ListItem>
+                </Link>
+
             </List>
 
         </Box>
