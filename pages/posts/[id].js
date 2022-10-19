@@ -6,13 +6,15 @@ import {Typography} from "@mui/material";
 import {initializeApollo, addApolloState} from '../../util/apolloClient'
 import moment from "moment/moment";
 
+import styles from "../../styles/Post.module.css";
+
 export default function Post({post}) {
     const formatDate = date => moment(date).format('dddd, MMMM Do YYYY');
     return (
         <>
-            <div style={{width: '80%', margin: '1rem auto'}}>
+            <div className={styles.post}>
                 <Typography variant={'h3'} textAlign={'left'}
-                            sx={{margin: '2rem 0 0 0', padding: '0rem 0 0 2rem', cursor: 'default'}}>
+                            className={styles.postTitle}>
                     {post?.data?.attributes?.Title}
                 </Typography>
                 <Typography variant={'subtitle1'} sx={{
@@ -20,7 +22,7 @@ export default function Post({post}) {
                     cursor: 'default'
                 }}>{formatDate(post?.data?.attributes?.publishedAt)}</Typography>
                 <br/>
-                <Typography variant={'body1'} textAlign={'left'} sx={{padding: '2rem'}}>
+                <Typography variant={'body1'} textAlign={'left'} className={styles.postContent}>
                     <ReactMarkdown remarkPlugins={[remarkGfm]}>{post?.data?.attributes?.Content}</ReactMarkdown>
                 </Typography>
             </div>
