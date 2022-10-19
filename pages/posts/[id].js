@@ -1,4 +1,5 @@
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import {GET_POSTS} from "../../graphql/posts/queries";
 import {GET_POST} from "../../graphql/posts/queries";
 import {Typography} from "@mui/material";
@@ -20,7 +21,7 @@ export default function Post({post}) {
                 }}>{formatDate(post?.data?.attributes?.publishedAt)}</Typography>
                 <br/>
                 <Typography variant={'body1'} textAlign={'left'} sx={{padding: '2rem'}}>
-                    <ReactMarkdown>{post?.data?.attributes?.Content}</ReactMarkdown>
+                    <ReactMarkdown remarkPlugins={[remarkGfm]}>{post?.data?.attributes?.Content}</ReactMarkdown>
                 </Typography>
             </div>
 
