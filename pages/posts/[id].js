@@ -17,10 +17,8 @@ export default function Post({post}) {
                             className={styles.postTitle}>
                     {post?.data?.attributes?.Title}
                 </Typography>
-                <Typography variant={'subtitle1'} sx={{
-                    padding: '0.8rem 0 0 2rem',
-                    cursor: 'default'
-                }}>{formatDate(post?.data?.attributes?.publishedAt)}</Typography>
+                <Typography variant={'subtitle1'}
+                            className={styles.postSubtitle}>{formatDate(post?.data?.attributes?.publishedAt)}</Typography>
                 <br/>
                 <Typography variant={'body1'} textAlign={'left'} className={styles.postContent}>
                     <ReactMarkdown remarkPlugins={[remarkGfm]}>{post?.data?.attributes?.Content}</ReactMarkdown>
