@@ -1,4 +1,4 @@
-import {Container, Divider, Typography, Button} from "@mui/material";
+import {Container, Divider, Typography} from "@mui/material";
 import Carousel from 'react-material-ui-carousel'
 import styles from '../styles/Home.module.css'
 import {initializeApollo} from '../util/apolloClient';
@@ -7,7 +7,7 @@ import {Parallax, useParallaxController} from 'react-scroll-parallax';
 import process from "../next.config";
 import {useState} from "react";
 import Image from "next/image";
-import Link from "next/link";
+import Card from "../components/Card";
 
 
 export default function Home({page}) {
@@ -73,7 +73,7 @@ export default function Home({page}) {
                           animation={"slide"}
                           duration={800}
                           indicators={false}
-                          height={400}
+                          className={styles.carousel}
                           indicatorIconButtonProps={{
                               style: {
                                   padding: '3px'
@@ -86,23 +86,12 @@ export default function Home({page}) {
                           }}>
                     {/* Loop through projects data and display */}
                     {page?.attributes?.projects?.data.map((project, i) => {
-                        return (<div key={i} className={styles.card}>
-                            <Typography variant='h2'>
-                                {project?.attributes?.Title}
-                            </Typography>
-                            <br/>
-                            <Typography variant='body2' gutterBottom>
-                                {project?.attributes?.Description}
-                            </Typography>
-                            <br/>
-                            <a href={project?.attributes?.Url || ''}
-                               target={'_blank'}
-                               rel="noopener noreferrer"
-                               style={{display: "inline-flex", alignItems: 'center', justifyContent: 'center'}}
-                            >
-                                <Button variant={'text'} className={styles.linkButton}>Github</Button>
-                            </a>
-                        </div>)
+                        return (<Card key={i} className={styles.card} infoObject={{
+                            Title: project?.attributes?.Title,
+                            Description: project?.attributes?.Description,
+                            Url: project?.attributes?.Url,
+                            externalUrl: true
+                        }}/>)
                     })}
                 </Carousel>
             </Container>
@@ -115,7 +104,7 @@ export default function Home({page}) {
                           animation={"slide"}
                           duration={800}
                           indicators={false}
-                          height={400}
+                          className={styles.carousel}
                           indicatorIconButtonProps={{
                               style: {
                                   padding: '3px'
@@ -128,19 +117,11 @@ export default function Home({page}) {
                           }}>
                     {/* Loop through posts data and display */}
                     {page?.attributes?.posts?.data.map((post, i) => {
-                        return (<div key={i} className={styles.card}>
-                            <Typography variant='h2'>
-                                {post?.attributes?.Title}
-                            </Typography>
-                            <br/>
-                            <Typography variant='body2' gutterBottom>
-                                {post?.attributes?.Description}
-                            </Typography>
-                            <br/>
-                            <Link href={`/posts/${post?.id}`}>
-                                <Button variant={'text'} className={styles.linkButton}>View Post</Button>
-                            </Link>
-                        </div>)
+                        return (<Card key={i} className={styles.card} infoObject={{
+                            Title: post?.attributes?.Title,
+                            Description: post?.attributes?.Description,
+                            Url: post?.id
+                        }}/>)
                     })}
                 </Carousel>
             </Container>

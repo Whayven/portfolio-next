@@ -9,14 +9,14 @@ import Link from "next/link";
 export default function Blog({page}) {
     return (
         <>
-            <Container sx={{margin: '1rem auto'}}>
+            <Container sx={{margin: '4.5rem auto'}}>
                 <Divider className={styles.divider}>
-                    <Typography variant={'h4'} sx={{padding: 0, margin: 0}}>Blog</Typography>
+                    <Typography variant={'h4'}>Blog</Typography>
                 </Divider>
 
                 {page?.data.map((post, i) => {
                     return (<div key={i} className={styles.parallaxCard}>
-                        <Typography variant='h4'>
+                        <Typography variant='h4' sx={{padding: '1rem 1rem 0'}}>
                             {post?.attributes?.Title}
                         </Typography>
                         <br/>
@@ -24,9 +24,12 @@ export default function Blog({page}) {
                             {post?.attributes?.Description}
                         </Typography>
                         <br/>
-                        <Link href={`/posts/${post?.id}`}>
-                            <Button variant={'text'} className={styles.linkButton}>View Post</Button>
-                        </Link>
+                        <div style={{margin: '0 auto', width: 'fit-content'}}>
+                            <Link href={`/posts/${post?.id}`}>
+                                <Button variant={'text'} className={styles.linkButton}>View Post</Button>
+                            </Link>
+                        </div>
+
                     </div>)
                 })}
 
