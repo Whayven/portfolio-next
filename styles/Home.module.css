@@ -106,7 +106,7 @@
 
 .card, .parallaxCard {
     padding: 2rem;
-    background-color: rgba(0, 0, 0, .3);
+    background-color: rgba(178, 223, 298, .1);
     border-radius: 6px;
 }
 
@@ -116,9 +116,9 @@
 }
 
 .card:hover {
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(128, 183, 190, .6);
     transform: scale(1.01);
-    box-shadow: #111111 0.5rem 0.7rem;
+    box-shadow: #C5DADA 0.5rem 0.7rem;
 }
 
 .card h2, .resumeCard h2 {
@@ -136,7 +136,7 @@
 }
 
 .card:hover h2 {
-    color: #03b5ff;
+    color: #0a537a;
 }
 
 .card p, .resumeCard p {
@@ -202,7 +202,7 @@
 }
 
 .linkButton {
-    color: #03b5ff;
+    color: #0a537a;
 }
 
 .linkButton:hover {
@@ -294,8 +294,29 @@
         border-color: #395B64;
     }
 
+    .card, .parallaxCard {
+        background-color: rgba(0, 0, 0, .3);
+    }
+
+    .card:hover {
+        background-color: rgba(0, 0, 0, 0.6);
+        box-shadow: #111111 0.5rem 0.7rem;
+    }
+
+    .card:hover h2 {
+        color: #03b5ff;
+    }
+
     .code {
         background: #111;
+    }
+
+    .linkButton {
+        color: #03b5ff;
+    }
+
+    .linkButton:hover {
+        color: #0070f3;
     }
 
     .logo img {

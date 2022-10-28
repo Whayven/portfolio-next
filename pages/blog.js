@@ -16,7 +16,7 @@ export default function Blog({page}) {
 
                 {page?.data.map((post, i) => {
                     return (<div key={i} className={styles.parallaxCard}>
-                        <Typography variant='h3'>
+                        <Typography variant='h4'>
                             {post?.attributes?.Title}
                         </Typography>
                         <br/>

@@ -73,6 +73,7 @@ export default function Home({page}) {
                           animation={"slide"}
                           duration={800}
                           indicators={false}
+                          height={400}
                           indicatorIconButtonProps={{
                               style: {
                                   padding: '3px'
@@ -114,6 +115,7 @@ export default function Home({page}) {
                           animation={"slide"}
                           duration={800}
                           indicators={false}
+                          height={400}
                           indicatorIconButtonProps={{
                               style: {
                                   padding: '3px'
