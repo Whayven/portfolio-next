@@ -7,7 +7,7 @@ import {Parallax, useParallaxController} from 'react-scroll-parallax';
 import process from "../next.config";
 import {useState} from "react";
 import Image from "next/image";
-import Card from "../components/Card";
+import BasicCard from "../components/Card";
 
 
 export default function Home({page}) {
@@ -86,7 +86,7 @@ export default function Home({page}) {
                           }}>
                     {/* Loop through projects data and display */}
                     {page?.attributes?.projects?.data.map((project, i) => {
-                        return (<Card key={i} className={styles.card} infoObject={{
+                        return (<BasicCard key={i} className={styles.card} infoObject={{
                             Title: project?.attributes?.Title,
                             Description: project?.attributes?.Description,
                             Url: project?.attributes?.Url,
@@ -117,7 +117,7 @@ export default function Home({page}) {
                           }}>
                     {/* Loop through posts data and display */}
                     {page?.attributes?.posts?.data.map((post, i) => {
-                        return (<Card key={i} className={styles.card} infoObject={{
+                        return (<BasicCard key={i} className={styles.card} infoObject={{
                             Title: post?.attributes?.Title,
                             Description: post?.attributes?.Description,
                             Url: post?.id
