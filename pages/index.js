@@ -7,7 +7,7 @@ import {Parallax, useParallaxController} from 'react-scroll-parallax';
 import process from "../next.config";
 import {useState} from "react";
 import Image from "next/image";
-import BasicCard from "../components/Card";
+import BasicCard from "../components/BasicCard";
 
 
 export default function Home({page}) {
