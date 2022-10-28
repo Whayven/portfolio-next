@@ -7,6 +7,7 @@ import Head from "next/head";
 import Nav from '../components/Nav';
 import {StyledEngineProvider} from "@mui/material/styles";
 import {ParallaxProvider} from "react-scroll-parallax";
+import FadeTransition from "../components/FadeTransition";
 import Footer from "../components/Footer";
 
 function MyApp({Component, pageProps}) {
@@ -19,8 +20,10 @@ function MyApp({Component, pageProps}) {
                     <link rel="icon" href="/favicon.png"/>
                 </Head>
                 <Nav/>
-                <Component {...pageProps} />
-                <Footer />
+                <FadeTransition>
+                    <Component {...pageProps} />
+                    <Footer/>
+                </FadeTransition>
             </ParallaxProvider>
         </StyledEngineProvider>
 
