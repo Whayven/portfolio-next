@@ -1,5 +1,5 @@
 .AppBar {
-    background-color: #A5C9CA
+    background-color: #A5C9CA !important;
 }
 
 .Box {
@@ -9,7 +9,7 @@
 
 @media (prefers-color-scheme: dark) {
     .AppBar {
-        background-color: #395B64;
+        background-color: #395B64 !important;
     }
 
     .Box {
